@@ -1,6 +1,6 @@
 Live link:-https://stellar-narwhal-13d84b.netlify.app
 
-Please check this pdf:-https://drive.google.com/file/d/1fwtPupu3xKZVxdqL-RRBIfvfmPUYYjyf/view
+***PLEASE CHECK LIVE LINK FOR OUTPUT
 
 
 Qno-:1. Explain what the simple List component does.
