@@ -1,5 +1,7 @@
 Live link:-https://stellar-narwhal-13d84b.netlify.app
 
+Please check this pdf:-https://drive.google.com/file/d/1fwtPupu3xKZVxdqL-RRBIfvfmPUYYjyf/view
+
 
 Qno-:1. Explain what the simple List component does.
 
@@ -69,59 +71,57 @@ diffing algorithm to work in a optimized way and brings smoothness in reconcilia
 e. Syntex error in array and shapeOf.
 
     WrappedListComponent.propTypes = {
-  items: PropTypes.array(PropTypes.shapeOf(
-  {
+    items: PropTypes.array(PropTypes.shapeOf(
+    {
     text: PropTypes.string.isRequired,
-  }
-  )
-  ),
-};
+    } )),
+    };
 
 
 Qno3:- Please fix, optimize, and/or modify the component as much as you think is necessary.  (PLEASE CHECK App.js)
 
-import React, { useState, useEffect, memo } from "react";
-import PropTypes from "prop-types";
+    import React, { useState, useEffect, memo } from "react";
+    import PropTypes from "prop-types";
 
-// Single List Item
-const WrappedSingleListItem = ({ index, isSelected, onClickHandler, text }) => {
-  const handleClick = () => {
-    onClickHandler(index);
-  };
+    // Single List Item
+    const WrappedSingleListItem = ({ index, isSelected, onClickHandler, text }) => {
+     const handleClick = () => {
+         onClickHandler(index);
+    };
 
-  return (
-    <li
-      style={{ backgroundColor: isSelected ? "green" : "red" }}
-      onClick={handleClick}
-    >
+    return (
+     <li
+        style={{ backgroundColor: isSelected ? "green" : "red" }}
+        onClick={handleClick}
+        >
       {text}
     </li>
-  );
-};
+    );
+    };
 
-WrappedSingleListItem.propTypes = {
-  index: PropTypes.number,
-  isSelected: PropTypes.bool,
-  onClickHandler: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired
-};
+    WrappedSingleListItem.propTypes = {
+        index: PropTypes.number,
+         isSelected: PropTypes.bool,
+           onClickHandler: PropTypes.func.isRequired,
+            text: PropTypes.string.isRequired
+         };
 
-const SingleListItem = memo(WrappedSingleListItem);
+    const SingleListItem = memo(WrappedSingleListItem);
 
-// List Component
-const WrappedListComponent = ({ items }) => {
-  const [selectedIndex, setSelectedIndex] = useState();
+    // List Component
+    const WrappedListComponent = ({ items }) => {
+     const [selectedIndex, setSelectedIndex] = useState();
 
-  useEffect(() => {
-    setSelectedIndex(null);
-  }, [items]);
+    useEffect(() => {
+     setSelectedIndex(null);
+    }, [items]);
 
-  const handleClick = (index) => {
-    selectedIndex === index ? setSelectedIndex(null) : setSelectedIndex(index);
-  };
-  // console.log(selectedIndex);
-  return (
-    <ul style={{ textAlign: "left" }}>
+    const handleClick = (index) => {
+     selectedIndex === index ? setSelectedIndex(null) : setSelectedIndex(index);
+    };
+     // console.log(selectedIndex);
+     return (
+     <ul style={{ textAlign: "left" }}>
       {items.map((item, index) => (
         <SingleListItem
           key={index}
@@ -132,28 +132,28 @@ const WrappedListComponent = ({ items }) => {
         />
       ))}
     </ul>
-  );
-};
+     );
+    };
 
-WrappedListComponent.propTypes = {
-  items: PropTypes.arrayOf(
+    WrappedListComponent.propTypes = {
+     items: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string.isRequired
     })
-  )
-};
+     )
+    };
 
-WrappedListComponent.defaultProps = {
-  items: [
-    { text: "Task1" },
-    { text: "Task2" },
-    { text: "Task3" },
-    { text: "Task4" }
-  ]
-};
+    WrappedListComponent.defaultProps = {
+     items: [
+     { text: "Task1" },
+     { text: "Task2" },
+     { text: "Task3" },
+     { text: "Task4" }
+    ]
+    };
 
-const List = memo(WrappedListComponent);
+    const List = memo(WrappedListComponent);
 
-export default List;
+    export default List;
 
 
